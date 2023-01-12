@@ -53,18 +53,6 @@ io.on('connection', socket =>{
         }
         io.emit('products', products)
       });
-
-    /*
-    socket.on('msg', data=>{
-        console.log(data);
-    });
-
-    socket.emit('msg_individual', 'esto lo recbe solo el socket');
-
-    socket.broadcast.emit('msg_todos_menos_el_socket', 'esto lo reciben todos menos el que envio el mensaje');
-
-    io.emit('msg_todos', 'este mensaje lo reciben todos');
-    */
 });
 
 app.use('*', (req, res) =>{

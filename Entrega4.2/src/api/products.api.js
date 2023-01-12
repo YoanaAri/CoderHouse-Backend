@@ -106,7 +106,6 @@ const getProducts = async (req, res) => {
             //res.json(productsLimit);
         }else{
             const products = await container.getAll();
-            console.log(products);
             res.render('home', {products, style});
             //res.json(products);
         }
