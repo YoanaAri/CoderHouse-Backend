@@ -1,0 +1,24 @@
+<div>
+     <div>
+        <form id="productForm">
+            <ul>
+                <li>
+                    <label for='title'>Title</label>
+                    <input type='text' name='title' id='title' />
+                </li>
+                <li>
+                    <label for='price'>Price</label>
+                    <input type='number' name='price' id='price' />
+                </li>
+            </ul>
+            <input type='submit' value='submit' />
+        </form>
+    </div>
+    <div id="listProducts">
+        <p id="product"></p>
+    </div>
+    {{!-- <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script> --}}
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js" defer></script>
+</div>
+
