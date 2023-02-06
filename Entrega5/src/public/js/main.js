@@ -1,23 +1,23 @@
-const socket = io();
+document.querySelector('#send').addEventListener('click', function(e){
+    e.preventDefault();
+    const id = document.querySelector('#id').value;
 
-const form = document.getElementById("productForm");
-const titleInput = document.getElementById("title");
-const priceInput = document.getElementById("price");
+    const data = {
+        title: document.querySelector('#title').value,
+        description: document.querySelector('#description').value,
+        price: document.querySelector('#price').value,
+        stock: document.querySelector('#stock').value
+    }
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const newProduct = {
-        title: titleInput.value,
-        price: priceInput.value,
-    };
-    socket.emit("products", newProduct);
-    titleInput.value = "";
-    priceInput.value = "";
+    fetch(`/api/products/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+        window.location.href = '/'
+    })
 });
-
-socket.on('products', (data) => {
-    const products = data.map(prod => {
-      return `title: ${prod.title} -> price: ${prod.price}`
-    }).join('<br>')
-    document.querySelector('p').innerHTML = products;
-  })
